@@ -24,7 +24,7 @@ namespace aegis.gateify
         [Description("Chance for CASSIE to jam [REQUIRES ShouldAnnounceLockGlitch TO BE TRUE]")]
         public float AnnounceLockJamChance { get; set; } = 100f;
 
-        [Description("How much CASSIE should wait before broadcasting at round start (in seconds) [REQUIRES ShouldAnnounceLock TO BE TRUE]")]
+        [Description("How much CASSIE should wait before broadcasting at round start (in seconds) (set to 0 to disable waiting) [REQUIRES ShouldAnnounceLock TO BE TRUE]")]
         public float AnnounceLockDelay { get; set; } = 30f;
 
         [Description("Message to broadcast at round start [REQUIRES ShouldAnnounceLock TO BE TRUE]")]

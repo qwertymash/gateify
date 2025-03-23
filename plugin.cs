@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using Exiled.API.Enums;
 using Exiled.API.Features;
 using Exiled.API.Features.Doors;
 using Exiled.Events.EventArgs.Server;
 using Respawning.Waves;
+
+using MEC;
 
 namespace aegis.gateify
 {
@@ -54,6 +57,7 @@ namespace aegis.gateify
             if (team.Wave is NtfSpawnWave || team.Wave is NtfMiniWave)
             {
                 OpenGate(GateB);
+                Timing.RunCoroutine(RespawnCoroutine());
                 if (Config.ShouldAnnounceOpen)
                 {
                     if (Config.ShouldAnnounceOpenGlitch)
@@ -69,15 +73,26 @@ namespace aegis.gateify
             else if (team.Wave is ChaosSpawnWave || team.Wave is ChaosMiniWave)
             {
                 OpenGate(GateA);
+                Timing.RunCoroutine(RespawnCoroutine());
                 if (Config.ShouldAnnounceOpenGlitch)
                 {
                     Cassie.GlitchyMessage(Config.AnnounceOpenBroadcastGateA, Config.AnnounceOpenGlitchChance, Config.AnnounceOpenJamChance);
                 }
-                else
+                else if (Config.ShouldAnnounceOpen)
                 {
                     Cassie.MessageTranslated(Config.AnnounceOpenBroadcastGateA, Config.AnnounceOpenTranslationGateA);
                 }
             }
+        }
+
+        private IEnumerator<float> LockCoroutine()
+        {
+            yield return Timing.WaitForSeconds(Config.AnnounceLockDelay);
+        }
+
+        private IEnumerator<float> RespawnCoroutine()
+        {
+            yield return Timing.WaitForSeconds(Config.AnnounceOpenDelay);
         }
 
         private void LockGate(Door gate)
