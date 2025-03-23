@@ -130,7 +130,7 @@ namespace aegis.gateify
             {
                 if (gate.IsOpen)
                 {
-                    gate.IsOpen = true;
+                    gate.IsOpen = false;
                     Log.Debug($"Closed {gate.Name}");
                 }
             }
