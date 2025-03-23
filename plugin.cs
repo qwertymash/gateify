@@ -6,13 +6,6 @@ using Exiled.API.Features.Doors;
 using Exiled.Events.EventArgs.Server;
 using Respawning.Waves;
 
-/*
-
-using InventorySystem.Items.Thirdperson.LayerProcessors;
-wtf was this doing here?
-
- */
-
 namespace aegis.gateify
 {
     public class Plugin : Plugin<Config>
@@ -41,6 +34,18 @@ namespace aegis.gateify
             GateB = Door.Get("GATE_B");
             LockGate(GateA);
             LockGate(GateB);
+
+            if (Config.CassieAnnounceLock)
+            {
+                if (Config.CassieAnnounceLockGlitch)
+                {
+                    Cassie.GlitchyMessage(Config.CassieAnnounceLockMessage, 5, 5);
+                }
+                else
+                {
+                    Cassie.MessageTranslated(Config.CassieAnnounceLockMessage, Config.CassieAnnounceLockTranslation);
+                }
+            }
         }
 
         private void Respawn(RespawnedTeamEventArgs team)
