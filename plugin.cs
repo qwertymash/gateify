@@ -15,7 +15,7 @@ namespace aegis.gateify
     {
         public override string Name => "Gateify";
         public override string Author => "aegis";
-        public override Version Version => new Version(0, 1, 0);
+        public override Version Version => new Version(0, 1, 1);
         public override Version RequiredExiledVersion => new Version(9, 5, 0);
         private Door GateA = null;
         private Door GateB = null;
