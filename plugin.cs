@@ -40,6 +40,7 @@ namespace aegis.gateify
 
             if (Config.ShouldAnnounceLock)
             {
+                Timing.RunCoroutine(LockCoroutine());
                 if (Config.ShouldAnnounceLockGlitch)
                 {
                     Cassie.GlitchyMessage(Config.AnnounceLockBroadcast, Config.AnnounceLockGlitchChance, Config.AnnounceLockJamChance);
