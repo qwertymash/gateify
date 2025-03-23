@@ -14,7 +14,6 @@ i hear you, and to that i say "ummmm kills you"
 i mean who doesnt love a tiiiiny bit more of a massacre? (i do)
 
 roadmap:
-- maybe make it so if a gate is already somehow open it automatically closes it (maybe)
 - maybe make it so that a gate opens only after a while after respawn (maybe)
 - try to fix the glitchy message not showing translation
 
