@@ -69,7 +69,7 @@ namespace aegis.gateify
         [Description("Whether or not the gates should close after a while")]
         public bool ShouldCloseGates { get; set; } = false;
 
-        [Description("How long the gates should remain open after a respawn (in seconds) [REQUIRES ShouldCloseGates TO BE TRUE]")]
+        [Description("How long the gates should remain open after a respawn [REQUIRES ShouldCloseGates TO BE TRUE]")]
         public float CloseGatesAfter { get; set; } = 0f;
     }
 }

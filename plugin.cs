@@ -55,8 +55,6 @@ namespace aegis.gateify
             });
         }
 
-        /// TO DO : ADD CLOSE GATES AFTER A WHILE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
         private void Respawn(RespawnedTeamEventArgs team)
         {
             Log.Debug($"{team.Wave} arrived, unlocking their respective gate");
@@ -78,6 +76,14 @@ namespace aegis.gateify
                         }
                     }
                 });
+
+                if (Config.ShouldCloseGates)
+                {
+                    Timing.CallDelayed(Config.CloseGatesAfter, () =>
+                    {
+                        CloseGate(GateB);
+                    });
+                }
             }
             else if (team.Wave is ChaosSpawnWave || team.Wave is ChaosMiniWave)
             {
@@ -94,6 +100,14 @@ namespace aegis.gateify
                         Cassie.MessageTranslated(Config.AnnounceOpenBroadcastGateA, Config.AnnounceOpenTranslationGateA);
                     }
                 });
+
+                if (Config.ShouldCloseGates)
+                {
+                    Timing.CallDelayed(Config.CloseGatesAfter, () =>
+                    {
+                        CloseGate(GateA);
+                    });
+                }
             }
         }
 
@@ -103,6 +117,22 @@ namespace aegis.gateify
             {
                 gate.Lock(long.MaxValue, DoorLockType.AdminCommand);
                 Log.Debug($"Locked {gate.Name}");
+            }
+            else
+            {
+                Log.Error("Gate is null (????)");
+            }
+        }
+
+        private void CloseGate(Door gate)
+        {
+            if (gate != null)
+            {
+                if (gate.IsOpen)
+                {
+                    gate.IsOpen = true;
+                    Log.Debug($"Closed {gate.Name}");
+                }
             }
             else
             {
