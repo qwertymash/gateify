@@ -35,21 +35,24 @@ namespace aegis.gateify
         {
             GateA = Door.Get("GATE_A");
             GateB = Door.Get("GATE_B");
-            LockGate(GateA);
-            LockGate(GateB);
 
-            if (Config.ShouldAnnounceLock)
+            Timing.CallDelayed(Config.AnnounceLockDelay, () =>
             {
-                Timing.RunCoroutine(LockCoroutine());
-                if (Config.ShouldAnnounceLockGlitch)
+                LockGate(GateA);
+                LockGate(GateB);
+
+                if (Config.ShouldAnnounceLock)
                 {
-                    Cassie.GlitchyMessage(Config.AnnounceLockBroadcast, Config.AnnounceLockGlitchChance, Config.AnnounceLockJamChance);
+                    if (Config.ShouldAnnounceLockGlitch)
+                    {
+                        Cassie.GlitchyMessage(Config.AnnounceLockBroadcast, Config.AnnounceLockGlitchChance, Config.AnnounceLockJamChance);
+                    }
+                    else
+                    {
+                        Cassie.MessageTranslated(Config.AnnounceLockBroadcast, Config.AnnounceLockTranslation);
+                    }
                 }
-                else
-                {
-                    Cassie.MessageTranslated(Config.AnnounceLockBroadcast, Config.AnnounceLockTranslation);
-                }
-            }
+            });
         }
 
         private void Respawn(RespawnedTeamEventArgs team)
@@ -57,43 +60,39 @@ namespace aegis.gateify
             Log.Debug($"{team.Wave} arrived, unlocking their respective gate");
             if (team.Wave is NtfSpawnWave || team.Wave is NtfMiniWave)
             {
-                OpenGate(GateB);
-                Timing.RunCoroutine(RespawnCoroutine());
-                if (Config.ShouldAnnounceOpen)
+                Timing.CallDelayed(Config.AnnounceOpenDelay, () =>
                 {
-                    if (Config.ShouldAnnounceOpenGlitch)
+                    OpenGate(GateB);
+
+                    if (Config.ShouldAnnounceOpen)
                     {
-                        Cassie.GlitchyMessage(Config.AnnounceOpenBroadcastGateB, Config.AnnounceOpenGlitchChance, Config.AnnounceOpenJamChance);
+                        if (Config.ShouldAnnounceOpenGlitch)
+                        {
+                            Cassie.GlitchyMessage(Config.AnnounceOpenBroadcastGateB, Config.AnnounceOpenGlitchChance, Config.AnnounceOpenJamChance);
+                        }
+                        else
+                        {
+                            Cassie.MessageTranslated(Config.AnnounceOpenBroadcastGateB, Config.AnnounceOpenTranslationGateB);
+                        }
                     }
-                    else
-                    {
-                        Cassie.MessageTranslated(Config.AnnounceOpenBroadcastGateB, Config.AnnounceOpenTranslationGateB);
-                    }
-                }
+                });
             }
             else if (team.Wave is ChaosSpawnWave || team.Wave is ChaosMiniWave)
             {
-                OpenGate(GateA);
-                Timing.RunCoroutine(RespawnCoroutine());
-                if (Config.ShouldAnnounceOpenGlitch)
+                Timing.CallDelayed(Config.AnnounceOpenDelay, () =>
                 {
-                    Cassie.GlitchyMessage(Config.AnnounceOpenBroadcastGateA, Config.AnnounceOpenGlitchChance, Config.AnnounceOpenJamChance);
-                }
-                else if (Config.ShouldAnnounceOpen)
-                {
-                    Cassie.MessageTranslated(Config.AnnounceOpenBroadcastGateA, Config.AnnounceOpenTranslationGateA);
-                }
+                    OpenGate(GateA);
+
+                    if (Config.ShouldAnnounceOpenGlitch)
+                    {
+                        Cassie.GlitchyMessage(Config.AnnounceOpenBroadcastGateA, Config.AnnounceOpenGlitchChance, Config.AnnounceOpenJamChance);
+                    }
+                    else if (Config.ShouldAnnounceOpen)
+                    {
+                        Cassie.MessageTranslated(Config.AnnounceOpenBroadcastGateA, Config.AnnounceOpenTranslationGateA);
+                    }
+                });
             }
-        }
-
-        private IEnumerator<float> LockCoroutine()
-        {
-            yield return Timing.WaitForSeconds(Config.AnnounceLockDelay);
-        }
-
-        private IEnumerator<float> RespawnCoroutine()
-        {
-            yield return Timing.WaitForSeconds(Config.AnnounceOpenDelay);
         }
 
         private void LockGate(Door gate)
