@@ -30,6 +30,9 @@ namespace aegis.gateify
         [Description("Whether or not the gates should be locked after said delay (false = locked at round start)")]
         public bool ShouldLockAfterDelay { get; set; } = false;
 
+        [Description("Whether or not the gates should be closed after said delay (false = closed at round start, may be open if its open before the delay)")]
+        public bool ShouldCloseAfterDelay { get; set; } = false;
+
         [Description("Message to broadcast at round start [REQUIRES ShouldAnnounceLock TO BE TRUE]")]
         public string AnnounceLockBroadcast { get; set; } = ".G7";
 

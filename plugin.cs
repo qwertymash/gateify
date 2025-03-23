@@ -40,6 +40,12 @@ namespace aegis.gateify
             {
                 LockGate(GateA);
                 LockGate(GateB);
+                
+                if (Config.ShouldCloseAfterDelay)
+                {
+                    CloseGate(GateA);
+                    CloseGate(GateB);
+                }
 
                 if (Config.ShouldAnnounceLock)
                 {
