@@ -67,9 +67,17 @@ namespace aegis.gateify
             Log.Debug($"{team.Wave} arrived, unlocking their respective gate");
             if (team.Wave is NtfSpawnWave || team.Wave is NtfMiniWave)
             {
-                Timing.CallDelayed(Config.AnnounceOpenDelay, () =>
+                if (!Config.ShouldOpenAfterDelay)
                 {
                     OpenGate(GateB);
+                }
+
+                Timing.CallDelayed(Config.AnnounceOpenDelay, () =>
+                {
+                    if (Config.ShouldOpenAfterDelay)
+                    {
+                        OpenGate(GateB);
+                    }
 
                     if (Config.ShouldAnnounceOpen)
                     {
@@ -94,9 +102,17 @@ namespace aegis.gateify
             }
             else if (team.Wave is ChaosSpawnWave || team.Wave is ChaosMiniWave)
             {
-                Timing.CallDelayed(Config.AnnounceOpenDelay, () =>
+                if (!Config.ShouldOpenAfterDelay)
                 {
                     OpenGate(GateA);
+                }
+
+                Timing.CallDelayed(Config.AnnounceOpenDelay, () =>
+                {
+                    if (Config.ShouldOpenAfterDelay)
+                    {
+                        OpenGate(GateA);
+                    }
 
                     if (Config.ShouldAnnounceOpenGlitch)
                     {
