@@ -35,15 +35,15 @@ namespace aegis.gateify
             LockGate(GateA);
             LockGate(GateB);
 
-            if (Config.CassieAnnounceLock)
+            if (Config.ShouldAnnounceLock)
             {
-                if (Config.CassieAnnounceLockGlitch)
+                if (Config.ShouldAnnounceLockGlitch)
                 {
-                    Cassie.GlitchyMessage(Config.CassieAnnounceLockMessage, 5, 5);
+                    Cassie.GlitchyMessage(Config.AnnounceLockBroadcast, 5, 5);
                 }
                 else
                 {
-                    Cassie.MessageTranslated(Config.CassieAnnounceLockMessage, Config.CassieAnnounceLockTranslation);
+                    Cassie.MessageTranslated(Config.AnnounceLockBroadcast, Config.AnnounceLockTranslation);
                 }
             }
         }
@@ -66,6 +66,7 @@ namespace aegis.gateify
             if (gate != null)
             {
                 gate.Lock(long.MaxValue, DoorLockType.AdminCommand);
+                Log.Debug($"Locked {gate.Name}");
             }
             else
             {
@@ -80,6 +81,7 @@ namespace aegis.gateify
                 if (!gate.IsOpen)
                 {
                     gate.IsOpen = true;
+                    Log.Debug($"Opened {gate.Name}");
                 }
             }
             else
