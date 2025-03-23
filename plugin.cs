@@ -4,8 +4,14 @@ using Exiled.API.Enums;
 using Exiled.API.Features;
 using Exiled.API.Features.Doors;
 using Exiled.Events.EventArgs.Server;
-using Exiled.Events.Features;
+using Respawning.Waves;
+
+/*
+
 using InventorySystem.Items.Thirdperson.LayerProcessors;
+wtf was this doing here?
+
+ */
 
 namespace aegis.gateify
 {
@@ -13,7 +19,7 @@ namespace aegis.gateify
     {
         public override string Name => "Gateify";
         public override string Author => "aegis";
-        public override Version Version => new Version(0,1,0);
+        public override Version Version => new Version(0, 1, 0);
         private Door GateA = null;
         private Door GateB = null;
 
@@ -39,7 +45,15 @@ namespace aegis.gateify
 
         private void Respawn(RespawnedTeamEventArgs team)
         {
-            Log.Debug($"{team.Wave} arrived, unlocking gate");
+            Log.Debug($"{team.Wave} arrived, unlocking their respective gate");
+            if (team.Wave is NtfSpawnWave || team.Wave is NtfMiniWave)
+            {
+                OpenGate(GateB);
+            }
+            else if (team.Wave is ChaosSpawnWave || team.Wave is ChaosMiniWave)
+            {
+                OpenGate(GateA);
+            }
         }
 
         private void LockGate(Door gate)
@@ -54,11 +68,14 @@ namespace aegis.gateify
             }
         }
 
-        private void UnlockGate(Door gate)
+        private void OpenGate(Door gate)
         {
             if (gate != null)
             {
-                gate.Unlock(long.MaxValue, DoorLockType.AdminCommand);
+                if (!gate.IsOpen)
+                {
+                    gate.IsOpen = true;
+                }
             }
             else
             {
