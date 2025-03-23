@@ -39,7 +39,7 @@ namespace aegis.gateify
             {
                 if (Config.ShouldAnnounceLockGlitch)
                 {
-                    Cassie.GlitchyMessage(Config.AnnounceLockBroadcast, 5, 5);
+                    Cassie.GlitchyMessage(Config.AnnounceLockBroadcast, Config.AnnounceLockGlitchChance, Config.AnnounceLockJamChance);
                 }
                 else
                 {
@@ -54,10 +54,29 @@ namespace aegis.gateify
             if (team.Wave is NtfSpawnWave || team.Wave is NtfMiniWave)
             {
                 OpenGate(GateB);
+                if (Config.ShouldAnnounceOpen)
+                {
+                    if (Config.ShouldAnnounceOpenGlitch)
+                    {
+                        Cassie.GlitchyMessage(Config.AnnounceOpenBroadcastGateB, Config.AnnounceOpenGlitchChance, Config.AnnounceOpenJamChance);
+                    }
+                    else
+                    {
+                        Cassie.MessageTranslated(Config.AnnounceOpenBroadcastGateB, Config.AnnounceOpenTranslationGateB);
+                    }
+                }
             }
             else if (team.Wave is ChaosSpawnWave || team.Wave is ChaosMiniWave)
             {
                 OpenGate(GateA);
+                if (Config.ShouldAnnounceOpenGlitch)
+                {
+                    Cassie.GlitchyMessage(Config.AnnounceOpenBroadcastGateA, Config.AnnounceOpenGlitchChance, Config.AnnounceOpenJamChance);
+                }
+                else
+                {
+                    Cassie.MessageTranslated(Config.AnnounceOpenBroadcastGateA, Config.AnnounceOpenTranslationGateA);
+                }
             }
         }
 
