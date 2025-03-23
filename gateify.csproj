@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="README.md" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="ExMod.Exiled" Version="9.5.1" />
   </ItemGroup>
 
