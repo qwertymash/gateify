@@ -18,10 +18,10 @@ namespace aegis.gateify
         [Description("Whether the CASSIE message should be glitchy [REQUIRES ShouldAnnounceLock TO BE TRUE]")]
         public bool ShouldAnnounceLockGlitch { get; set; } = false;
 
-        [Description("Chance for CASSIE to glitch [REQUIRES ShouldAnnounceLockGlitch TO BE TRUE]")]
+        [Description("Chance for CASSIE to glitch (values from 0% to 100%) [REQUIRES ShouldAnnounceLockGlitch TO BE TRUE]")]
         public float AnnounceLockGlitchChance { get; set; } = 0f;
 
-        [Description("Chance for CASSIE to jam [REQUIRES ShouldAnnounceLockGlitch TO BE TRUE]")]
+        [Description("Chance for CASSIE to jam (values from 0% to 100%) [REQUIRES ShouldAnnounceLockGlitch TO BE TRUE]")]
         public float AnnounceLockJamChance { get; set; } = 0f;
 
         [Description("How much CASSIE should wait before broadcasting at round start (in seconds) (set to 0 to disable waiting) [REQUIRES ShouldAnnounceLock TO BE TRUE]")]
@@ -42,10 +42,10 @@ namespace aegis.gateify
         [Description("Whether the CASSIE message should be glitchy [REQUIRES ShouldAnnounceOpen TO BE TRUE]")]
         public bool ShouldAnnounceOpenGlitch { get; set; } = false;
 
-        [Description("Chance for CASSIE to glitch [REQUIRES ShouldAnnounceOpenGlitch TO BE TRUE] ")]
+        [Description("Chance for CASSIE to glitch (values from 0% to 100%) [REQUIRES ShouldAnnounceOpenGlitch TO BE TRUE] ")]
         public float AnnounceOpenGlitchChance { get; set; } = 0f;
 
-        [Description("Chance for CASSIE to jam [REQUIRES ShouldAnnounceOpenGlitch TO BE TRUE]")]
+        [Description("Chance for CASSIE to jam (values from 0% to 100%) [REQUIRES ShouldAnnounceOpenGlitch TO BE TRUE]")]
         public float AnnounceOpenJamChance { get; set; } = 0f;
 
         [Description("How much CASSIE should wait before broadcasting at team arrival/when opened (in seconds) (if 0, then right after the MTF announcement) [REQUIRES ShouldAnnounceOpen TO BE TRUE]")]

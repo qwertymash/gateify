@@ -45,7 +45,7 @@ namespace aegis.gateify
                 {
                     if (Config.ShouldAnnounceLockGlitch)
                     {
-                        Cassie.GlitchyMessage(Config.AnnounceLockBroadcast, Config.AnnounceLockGlitchChance, Config.AnnounceLockJamChance);
+                        Cassie.GlitchyMessage(Config.AnnounceLockBroadcast, Config.AnnounceLockGlitchChance/100, Config.AnnounceLockJamChance/100);
                     }
                     else
                     {
@@ -68,7 +68,7 @@ namespace aegis.gateify
                     {
                         if (Config.ShouldAnnounceOpenGlitch)
                         {
-                            Cassie.GlitchyMessage(Config.AnnounceOpenBroadcastGateB, Config.AnnounceOpenGlitchChance, Config.AnnounceOpenJamChance);
+                            Cassie.GlitchyMessage(Config.AnnounceOpenBroadcastGateB, Config.AnnounceOpenGlitchChance/100, Config.AnnounceOpenJamChance/100);
                         }
                         else
                         {
@@ -93,7 +93,7 @@ namespace aegis.gateify
 
                     if (Config.ShouldAnnounceOpenGlitch)
                     {
-                        Cassie.GlitchyMessage(Config.AnnounceOpenBroadcastGateA, Config.AnnounceOpenGlitchChance, Config.AnnounceOpenJamChance);
+                        Cassie.GlitchyMessage(Config.AnnounceOpenBroadcastGateA, Config.AnnounceOpenGlitchChance/100, Config.AnnounceOpenJamChance/100);
                     }
                     else if (Config.ShouldAnnounceOpen)
                     {
