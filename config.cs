@@ -37,16 +37,16 @@ namespace aegis.gateify
         public string AnnounceLockTranslation { get; set; } = "Lazy bastard... forgot to configure me! Feel the wrath of the gates!";
 
         [Description("Whether a CASSIE message should broadcast at team arrival/when opened")]
-        public bool ShouldAnnounceOpen { get; set; } = true;
+        public bool ShouldAnnounceOpen { get; set; } = false;
 
         [Description("Whether the CASSIE message should be glitchy [REQUIRES ShouldAnnounceOpen TO BE TRUE]")]
         public bool ShouldAnnounceOpenGlitch { get; set; } = false;
 
         [Description("Chance for CASSIE to glitch [REQUIRES ShouldAnnounceOpenGlitch TO BE TRUE] ")]
-        public float AnnounceOpenGlitchChance { get; set; } = 25f;
+        public float AnnounceOpenGlitchChance { get; set; } = 0f;
 
         [Description("Chance for CASSIE to jam [REQUIRES ShouldAnnounceOpenGlitch TO BE TRUE]")]
-        public float AnnounceOpenJamChance { get; set; } = 25f;
+        public float AnnounceOpenJamChance { get; set; } = 0f;
 
         [Description("How much CASSIE should wait before broadcasting at team arrival/when opened (in seconds) (if 0, then right after the MTF announcement) [REQUIRES ShouldAnnounceOpen TO BE TRUE]")]
         public float AnnounceOpenDelay { get; set; } = 0f;

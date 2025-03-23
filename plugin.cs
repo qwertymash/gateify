@@ -55,6 +55,8 @@ namespace aegis.gateify
             });
         }
 
+        /// TO DO : ADD CLOSE GATES AFTER A WHILE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         private void Respawn(RespawnedTeamEventArgs team)
         {
             Log.Debug($"{team.Wave} arrived, unlocking their respective gate");
