@@ -52,8 +52,6 @@ namespace aegis.gateify
 
 
 
-        [Description("\nWhether the CASSIE messages are synced between each other (GATE A <-> GATE B)")]
-        public bool SyncCassieMessages { get; set; } = false;
         #region SYNCED CASSIE SETTINGS
         [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nSYNCED CASSIE SETTINGS\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nWhether CASSIE should broadcast the gates locking")]
         public bool SyncShouldAnnounceLock { get; set; } = false;
