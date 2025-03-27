@@ -27,6 +27,7 @@ namespace aegis.gateify
         [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before closing (set to 0 to disable) (relative to the respawn wave)")]
         public float SyncRespawnCloseDelay { get; set; } = 0f;
         #endregion
+
         #region NON-SYNCED GATE SETTINGS
         #region GATE A
         [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nNON-SYNCED SETTINGS\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nGATE A\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nShould the gate lock after a specific time? (use 0 for round start)")]
