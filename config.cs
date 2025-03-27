@@ -29,7 +29,7 @@ namespace aegis.gateify
         [Description("CASSIE broadcast translation")]
         public string SyncAnnounceTranslation { get; set; } = "silly goober go look at your config";
         [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
-        public bool SyncShouldAnnounceLockGlitch { get; set; } = false;
+        public bool SyncShouldAnnounceLockGlitchy { get; set; } = false;
         [Description("Chance for CASSIE to glitch (values from 0% to 100%)")]
         public float SyncAnnounceLockGlitchChance { get; set; } = 0f;
         [Description("Chance for CASSIE to jam (values from 0% to 100%)")]
@@ -52,7 +52,7 @@ namespace aegis.gateify
         [Description("CASSIE broadcast translation")]
         public string GateAAnnounceTranslation { get; set; } = "silly goober go look at your config";
         [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
-        public bool GateAShouldAnnounceLockGlitch { get; set; } = false;
+        public bool GateAShouldAnnounceLockGlitchy { get; set; } = false;
         [Description("Chance for CASSIE to glitch (values from 0% to 100%)")]
         public float GateAAnnounceLockGlitchChance { get; set; } = 0f;
         [Description("Chance for CASSIE to jam (values from 0% to 100%)")]
@@ -74,7 +74,7 @@ namespace aegis.gateify
         [Description("CASSIE broadcast translation")]
         public string GateBAnnounceTranslation { get; set; } = "silly goober go look at your config";
         [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
-        public bool GateBShouldAnnounceLockGlitch { get; set; } = false;
+        public bool GateBShouldAnnounceLockGlitchy { get; set; } = false;
         [Description("Chance for CASSIE to glitch (values from 0% to 100%)")]
         public float GateBAnnounceLockGlitchChance { get; set; } = 0f;
         [Description("Chance for CASSIE to jam (values from 0% to 100%)")]
@@ -97,7 +97,7 @@ namespace aegis.gateify
         [Description("CASSIE broadcast translation")]
         public string SyncAnnounceOpenTranslation { get; set; } = "silly goober go look at your config";
         [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
-        public bool SyncShouldAnnounceOpenGlitch { get; set; } = false;
+        public bool SyncShouldAnnounceOpenGlitchy { get; set; } = false;
         [Description("Whether CASSIE should broadcast the gate closing")]
         public bool SyncShouldAnnounceClose { get; set; } = false;
         [Description("CASSIE broadcast message")]
@@ -117,7 +117,7 @@ namespace aegis.gateify
         [Description("CASSIE broadcast translation")]
         public string GateAAnnounceOpenTranslation { get; set; } = "silly goober go look at your config";
         [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
-        public bool GateAShouldAnnounceOpenGlitch { get; set; } = false;
+        public bool GateAShouldAnnounceOpenGlitchy { get; set; } = false;
         [Description("Whether CASSIE should broadcast the gate closing")]
         public bool GateAShouldAnnounceClose { get; set; } = false;
         [Description("CASSIE broadcast message")]
@@ -135,7 +135,7 @@ namespace aegis.gateify
         [Description("CASSIE broadcast translation")]
         public string GateBAnnounceOpenTranslation { get; set; } = "silly goober go look at your config";
         [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
-        public bool GateBShouldAnnounceOpenGlitch { get; set; } = false;
+        public bool GateBShouldAnnounceOpenGlitchy { get; set; } = false;
         [Description("Whether CASSIE should broadcast the gate closing")]
         public bool GateBShouldAnnounceClose { get; set; } = false;
         [Description("CASSIE broadcast message")]

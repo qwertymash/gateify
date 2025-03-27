@@ -39,7 +39,15 @@ namespace aegis.gateify
             if (Config.ShouldSyncGates)
             {
                 #region SYNCED SETTINGS
+                Timing.CallDelayed(Config.SyncLockDelay, () =>
+                {
+                    #region ANNOUNCE LOCK
+                    if (Config.SyncShouldAnnounceLock)
+                    {
 
+                    }
+                    #endregion
+                });
                 #endregion
             }
             else
