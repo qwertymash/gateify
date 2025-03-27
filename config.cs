@@ -24,8 +24,8 @@ namespace aegis.gateify
         public float SyncCloseDelay { get; set; } = 0f;
         [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before opening (set to 0 to disable)")]
         public float SyncRespawnOpenDelay { get; set; } = 0f;
-        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before closing (set to 0 to disable) (relative to the respawn wave)")]
-        public float SyncRespawnCloseDelay { get; set; } = 0f;
+        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before closing (set to a huge number to disable) (relative to the respawn wave)")]
+        public float SyncRespawnCloseDelay { get; set; } = long.MaxValue;
         #endregion
 
         #region NON-SYNCED GATE SETTINGS
@@ -36,8 +36,8 @@ namespace aegis.gateify
         public float GateACloseDelay { get; set; } = 0f;
         [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before opening (set to 0 to disable)")]
         public float GateARespawnOpenDelay { get; set; } = 0f;
-        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before closing (set to 0 to disable) (relative to the respawn wave)")]
-        public float GateARespawnCloseDelay { get; set; } = 0f;
+        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before closing (set to a huge number to disable) (relative to the respawn wave)")]
+        public float GateARespawnCloseDelay { get; set; } = long.MaxValue;
         #endregion
         #region GATE B
         [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nGATE B\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nShould the gate lock after a specific time? (use 0 for round start)")]
@@ -46,8 +46,8 @@ namespace aegis.gateify
         public float GateBCloseDelay { get; set; } = 0f;
         [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before opening (set to 0 to disable)")]
         public float GateBRespawnOpenDelay { get; set; } = 0f;
-        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before closing (set to 0 to disable) (relative to the respawn wave)")]
-        public float GateBRespawnCloseDelay { get; set; } = 0f;
+        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before closing (set to a huge number to disable) (relative to the respawn wave)")]
+        public float GateBRespawnCloseDelay { get; set; } = long.MaxValue;
         #endregion
         #endregion
 
