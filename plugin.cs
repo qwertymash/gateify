@@ -33,8 +33,12 @@ namespace aegis.gateify
 
         private void GetGates()
         {
+            Log.Debug("Getting gates...");
+
             GateA = Door.Get(DoorType.GateA);
             GateB = Door.Get(DoorType.GateB);
+
+            Log.Debug("Locking the gates... (might take a while depending on config)");
 
             if (Config.ShouldSyncGates)
             {
@@ -42,10 +46,36 @@ namespace aegis.gateify
                 Timing.CallDelayed(Config.SyncLockDelay, () =>
                 {
                     #region ANNOUNCE LOCK
+
                     if (Config.SyncShouldAnnounceLock)
                     {
-
+                        if (Config.SyncShouldAnnounceLockGlitchy)
+                        {
+                            Cassie.GlitchyMessage(Config.SyncAnnounceLockBroadcast, Config.SyncAnnounceLockGlitchChance / 100, Config.SyncAnnounceLockJamChance / 100);
+                        }
+                        else
+                        {
+                            Cassie.MessageTranslated(Config.SyncAnnounceLockBroadcast, Config.SyncAnnounceLockTranslation);
+                        }
                     }
+
+                    #endregion
+
+                    #region LOCK GATES
+
+                    LockGate(GateA);
+                    LockGate(GateB);
+
+                    #endregion
+                });
+
+                Timing.CallDelayed(Config.SyncCloseDelay, () =>
+                {
+                    #region CLOSE GATES
+
+                    CloseGate(GateA);
+                    CloseGate(GateB);
+
                     #endregion
                 });
                 #endregion
@@ -53,105 +83,277 @@ namespace aegis.gateify
             else
             {
                 #region NON-SYNCED SETTINGS
+                #region GATE A
+
+                Timing.CallDelayed(Config.GateALockDelay, () =>
+                {
+                    #region ANNOUNCE GATE LOCK
+
+                    if (Config.GateAShouldAnnounceLock)
+                    {
+                        if (Config.GateAShouldAnnounceLockGlitchy)
+                        {
+                            Cassie.GlitchyMessage(Config.GateAAnnounceLockBroadcast, Config.GateAAnnounceLockGlitchChance / 100, Config.GateAAnnounceLockJamChance / 100);
+                        }
+                        else
+                        {
+                            Cassie.MessageTranslated(Config.GateAAnnounceLockBroadcast, Config.GateAAnnounceLockTranslation);
+                        }
+                    }
+
+                    #endregion
+
+                    #region LOCK GATE
+
+                    LockGate(GateA);
+
+                    #endregion
+                });
+
+                Timing.CallDelayed(Config.GateACloseDelay, () =>
+                {
+                    #region CLOSE GATE
+
+                    CloseGate(GateA);
+
+                    #endregion
+                });
 
                 #endregion
-            }
 
-            /*Timing.CallDelayed(Config.SyncLockDelay, () =>
-            {
-                LockGate(GateA);
-                LockGate(GateB);
-                
-                if (Config.SyncShouldCloseAfterDelay)
+                #region GATE B
+
+                Timing.CallDelayed(Config.GateALockDelay, () =>
                 {
-                    CloseGate(GateA);
+                    #region ANNOUNCE GATE LOCK
+
+                    if (Config.GateBShouldAnnounceLock)
+                    {
+                        if (Config.GateBShouldAnnounceLockGlitchy)
+                        {
+                            Cassie.GlitchyMessage(Config.GateBAnnounceLockBroadcast, Config.GateBAnnounceLockGlitchChance / 100, Config.GateBAnnounceLockJamChance / 100);
+                        }
+                        else
+                        {
+                            Cassie.MessageTranslated(Config.GateBAnnounceLockBroadcast, Config.GateBAnnounceLockTranslation);
+                        }
+                    }
+
+                    #endregion
+
+                    #region LOCK GATE
+
+                    LockGate(GateB);
+
+                    #endregion
+                });
+
+                Timing.CallDelayed(Config.GateACloseDelay, () =>
+                {
+                    #region CLOSE GATE
+
                     CloseGate(GateB);
-                }
 
-                if (Config.SyncShouldAnnounceLock)
-                {
-                    if (Config.SyncShouldAnnounceLockGlitch)
-                    {
-                        Cassie.GlitchyMessage(Config.SyncAnnounceLockBroadcast, Config.SyncAnnounceLockGlitchChance/100, Config.SyncAnnounceLockJamChance/100);
-                    }
-                    else
-                    {
-                        Cassie.MessageTranslated(Config.SyncAnnounceLockBroadcast, Config.SyncAnnounceTranslation);
-                    }
-                }
-            });*/
+                    #endregion
+                });
+
+                #endregion
+                #endregion
+            }
         }
 
         private void Respawn(RespawnedTeamEventArgs team)
         {
-            /*Log.Debug($"{team.Wave} arrived, unlocking their respective gate");
-            if (team.Wave is NtfSpawnWave || team.Wave is NtfMiniWave)
+            Log.Debug($"{team.Wave.ToString()} arrived, opening their gate... (might take a while depending on config)");
+
+            if (Config.ShouldSyncGates)
             {
-                if (!Config.SyncShouldOpenAfterDelay)
-                {
-                    OpenGate(GateB);
-                }
+                #region SYNCED SETTINGS
 
-                Timing.CallDelayed(Config.AnnounceOpenDelay, () =>
+                Timing.CallDelayed(Config.SyncRespawnOpenDelay, () =>
                 {
-                    if (Config.SyncShouldOpenAfterDelay)
-                    {
-                        OpenGate(GateB);
-                    }
+                    #region ANNOUNCE OPEN
 
-                    if (Config.ShouldAnnounceOpen)
+                    if (Config.SyncShouldAnnounceOpen)
                     {
-                        if (Config.ShouldAnnounceOpenGlitch)
+                        if (Config.SyncShouldAnnounceOpenGlitchy)
                         {
-                            Cassie.GlitchyMessage(Config.AnnounceOpenBroadcastGateB, Config.AnnounceOpenGlitchChance/100, Config.AnnounceOpenJamChance/100);
+                            Cassie.GlitchyMessage(Config.SyncAnnounceOpenBroadcast, Config.SyncAnnounceOpenGlitchChance / 100, Config.SyncAnnounceOpenJamChance / 100);
                         }
                         else
                         {
-                            Cassie.MessageTranslated(Config.AnnounceOpenBroadcastGateB, Config.AnnounceOpenTranslationGateB);
+                            Cassie.MessageTranslated(Config.SyncAnnounceOpenBroadcast, Config.SyncAnnounceOpenTranslation);
                         }
                     }
-                });
 
-                if (Config.ShouldCloseGates)
-                {
-                    Timing.CallDelayed(Config.CloseGatesAfter, () =>
+                    #endregion
+
+                    #region OPEN GATE
+
+                    if (team.Wave is NtfSpawnWave || team.Wave is NtfMiniWave)
                     {
-                        CloseGate(GateB);
-                    });
-                }
-            }
-            else if (team.Wave is ChaosSpawnWave || team.Wave is ChaosMiniWave)
-            {
-                if (!Config.ShouldOpenAfterDelay)
-                {
-                    OpenGate(GateA);
-                }
-
-                Timing.CallDelayed(Config.AnnounceOpenDelay, () =>
-                {
-                    if (Config.ShouldOpenAfterDelay)
+                        OpenGate(GateB);
+                    }
+                    else if (team.Wave is ChaosSpawnWave || team.Wave is ChaosMiniWave)
                     {
                         OpenGate(GateA);
                     }
 
-                    if (Config.ShouldAnnounceOpenGlitch)
-                    {
-                        Cassie.GlitchyMessage(Config.AnnounceOpenBroadcastGateA, Config.AnnounceOpenGlitchChance/100, Config.AnnounceOpenJamChance/100);
-                    }
-                    else if (Config.ShouldAnnounceOpen)
-                    {
-                        Cassie.MessageTranslated(Config.AnnounceOpenBroadcastGateA, Config.AnnounceOpenTranslationGateA);
-                    }
+                    #endregion
                 });
 
-                if (Config.ShouldCloseGates)
+                Timing.CallDelayed(Config.SyncRespawnCloseDelay, () =>
                 {
-                    Timing.CallDelayed(Config.CloseGatesAfter, () =>
+                    #region ANNOUNCE CLOSE
+
+                    if (Config.SyncShouldAnnounceClose)
+                    {
+                        if (Config.SyncShouldAnnounceCloseGlitchy)
+                        {
+                            Cassie.GlitchyMessage(Config.SyncAnnounceCloseBroadcast, Config.SyncAnnounceCloseGlitchChance / 100, Config.SyncAnnounceCloseJamChance / 100);
+                        }
+                        else
+                        {
+                            Cassie.MessageTranslated(Config.SyncAnnounceCloseBroadcast, Config.SyncAnnounceCloseTranslation);
+                        }
+                    }
+
+                    #endregion
+
+                    #region CLOSE GATE
+
+                    if (team.Wave is NtfSpawnWave || team.Wave is NtfMiniWave)
+                    {
+                        CloseGate(GateB);
+                    }
+                    else if (team.Wave is ChaosSpawnWave || team.Wave is ChaosMiniWave)
                     {
                         CloseGate(GateA);
+                    }
+
+                    #endregion
+                });
+
+                #endregion
+            }
+            else
+            {
+                #region NON-SYNCED SETTINGS
+                #region GATE A
+
+                if (team.Wave is ChaosSpawnWave || team.Wave is ChaosMiniWave)
+                {
+                    Timing.CallDelayed(Config.GateARespawnOpenDelay, () =>
+                    {
+                        #region ANNOUNCE OPEN
+
+                        if (Config.GateAShouldAnnounceOpen)
+                        {
+                            if (Config.GateAShouldAnnounceOpenGlitchy)
+                            {
+                                Cassie.GlitchyMessage(Config.GateAAnnounceOpenBroadcast, Config.GateAAnnounceOpenGlitchChance / 100, Config.GateAAnnounceOpenJamChance / 100);
+                            }
+                            else
+                            {
+                                Cassie.MessageTranslated(Config.GateAAnnounceOpenBroadcast, Config.GateAAnnounceOpenTranslation);
+                            }
+                        }
+
+                        #endregion
+
+                        #region OPEN GATE
+
+                        OpenGate(GateA);
+
+                        #endregion
+                    });
+
+                    Timing.CallDelayed(Config.GateARespawnCloseDelay, () =>
+                    {
+                        #region ANNOUNCE CLOSE
+
+                        if (Config.GateAShouldAnnounceClose)
+                        {
+                            if (Config.GateAShouldAnnounceCloseGlitchy)
+                            {
+                                Cassie.GlitchyMessage(Config.GateAAnnounceCloseBroadcast, Config.GateAAnnounceCloseGlitchChance / 100, Config.GateAAnnounceCloseJamChance / 100);
+                            }
+                            else
+                            {
+                                Cassie.MessageTranslated(Config.GateAAnnounceCloseBroadcast, Config.GateAAnnounceCloseTranslation);
+                            }
+                        }
+
+                        #endregion
+
+                        #region CLOSE GATE
+
+                        CloseGate(GateA);
+
+                        #endregion
                     });
                 }
-            }*/
+
+                #endregion
+
+                #region GATE B
+
+                else if (team.Wave is NtfSpawnWave || team.Wave is NtfMiniWave)
+                {
+                    Timing.CallDelayed(Config.GateBRespawnOpenDelay, () =>
+                    {
+                        #region ANNOUNCE OPEN
+
+                        if (Config.GateBShouldAnnounceOpen)
+                        {
+                            if (Config.GateBShouldAnnounceOpenGlitchy)
+                            {
+                                Cassie.GlitchyMessage(Config.GateBAnnounceOpenBroadcast, Config.GateBAnnounceOpenGlitchChance / 100, Config.GateBAnnounceOpenJamChance / 100);
+                            }
+                            else
+                            {
+                                Cassie.MessageTranslated(Config.GateBAnnounceOpenBroadcast, Config.GateBAnnounceOpenTranslation);
+                            }
+                        }
+
+                        #endregion
+
+                        #region OPEN GATE
+
+                        OpenGate(GateB);
+
+                        #endregion
+                    });
+
+                    Timing.CallDelayed(Config.GateBRespawnCloseDelay, () =>
+                    {
+                        #region ANNOUNCE CLOSE
+
+                        if (Config.GateBShouldAnnounceClose)
+                        {
+                            if (Config.GateBShouldAnnounceCloseGlitchy)
+                            {
+                                Cassie.GlitchyMessage(Config.GateBAnnounceCloseBroadcast, Config.GateBAnnounceCloseGlitchChance / 100, Config.GateBAnnounceCloseJamChance / 100);
+                            }
+                            else
+                            {
+                                Cassie.MessageTranslated(Config.GateBAnnounceCloseBroadcast, Config.GateBAnnounceCloseTranslation);
+                            }
+                        }
+
+                        #endregion
+
+                        #region CLOSE GATE
+
+                        CloseGate(GateB);
+
+                        #endregion
+                    });
+                }
+
+                #endregion
+                #endregion
+            }
         }
 
         private void LockGate(Door gate)

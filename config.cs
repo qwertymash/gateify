@@ -21,76 +21,53 @@ namespace aegis.gateify
         [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nSYNCED SETTINGS\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nShould the gates lock after a specific time? (use 0 for round start)")]
         public float SyncLockDelay { get; set; } = 0f;
         [Description("Should the gates close after said delay? (use 0 for round start) (useful if the gate is already open yet you still want people to be locked in)")]
-        public float SyncCloseAfterDelay { get; set; } = 0f;
-        [Description("Whether a CASSIE message should broadcast the lock")]
-        public bool SyncShouldAnnounceLock { get; set; } = false;
-        [Description("CASSIE broadcast message")]
-        public string SyncAnnounceLockBroadcast { get; set; } = ".G7";
-        [Description("CASSIE broadcast translation")]
-        public string SyncAnnounceTranslation { get; set; } = "silly goober go look at your config";
-        [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
-        public bool SyncShouldAnnounceLockGlitchy { get; set; } = false;
-        [Description("Chance for CASSIE to glitch (values from 0% to 100%)")]
-        public float SyncAnnounceLockGlitchChance { get; set; } = 0f;
-        [Description("Chance for CASSIE to jam (values from 0% to 100%)")]
-        public float SyncAnnounceLockJamChance { get; set; } = 0f;
-        [Description("The time (in seconds) needed to wait after the respawn wave before opening (set to -1 to disable)")]
-        public float SyncOpenDelay { get; set; } = -1f;
-        [Description("The time (in seconds) needed to wait after the respawn wave before closing (set to -1 to disable) (relative to the respawn wave)")]
-        public float SyncCloseDelay { get; set; } = -1f;
+        public float SyncCloseDelay { get; set; } = 0f;
+        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before opening (set to -1 to disable)")]
+        public float SyncRespawnOpenDelay { get; set; } = -1f;
+        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before closing (set to -1 to disable) (relative to the respawn wave)")]
+        public float SyncRespawnCloseDelay { get; set; } = -1f;
         #endregion
         #region NON-SYNCED GATE SETTINGS
         #region GATE A
         [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nNON-SYNCED SETTINGS\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nGATE A\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nShould the gate lock after a specific time? (use 0 for round start)")]
         public float GateALockDelay { get; set; } = 0f;
         [Description("Should the gate close after said delay? (use 0 for round start) (useful if the gate is already open yet you still want people to be locked in)")]
-        public float GateACloseAfterDelay { get; set; } = 0f;
-        [Description("Whether a CASSIE message should broadcast the lock")]
-        public bool GateAShouldAnnounceLock { get; set; } = false;
-        [Description("CASSIE broadcast message")]
-        public string GateAAnnounceLockBroadcast { get; set; } = ".G7";
-        [Description("CASSIE broadcast translation")]
-        public string GateAAnnounceTranslation { get; set; } = "silly goober go look at your config";
-        [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
-        public bool GateAShouldAnnounceLockGlitchy { get; set; } = false;
-        [Description("Chance for CASSIE to glitch (values from 0% to 100%)")]
-        public float GateAAnnounceLockGlitchChance { get; set; } = 0f;
-        [Description("Chance for CASSIE to jam (values from 0% to 100%)")]
-        public float GateAAnnounceLockJamChance { get; set; } = 0f;
-        [Description("The time (in seconds) needed to wait after the respawn wave before opening (set to -1 to disable)")]
-        public float GateAOpenDelay { get; set; } = -1f;
-        [Description("The time (in seconds) needed to wait after the respawn wave before closing (set to -1 to disable) (relative to the respawn wave)")]
-        public float GateACloseDelay { get; set; } = -1f;
+        public float GateACloseDelay { get; set; } = 0f;
+        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before opening (set to -1 to disable)")]
+        public float GateARespawnOpenDelay { get; set; } = -1f;
+        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before closing (set to -1 to disable) (relative to the respawn wave)")]
+        public float GateARespawnCloseDelay { get; set; } = -1f;
         #endregion
         #region GATE B
         [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nGATE B\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nShould the gate lock after a specific time? (use 0 for round start)")]
         public float GateBLockDelay { get; set; } = 0f;
         [Description("Should the gate close after said delay? (use 0 for round start) (useful if the gate is already open yet you still want people to be locked in)")]
-        public float GateBCloseAfterDelay { get; set; } = 0f;
-        [Description("Whether a CASSIE message should broadcast the lock")]
-        public bool GateBShouldAnnounceLock { get; set; } = false;
-        [Description("CASSIE broadcast message")]
-        public string GateBAnnounceLockBroadcast { get; set; } = ".G7";
-        [Description("CASSIE broadcast translation")]
-        public string GateBAnnounceTranslation { get; set; } = "silly goober go look at your config";
-        [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
-        public bool GateBShouldAnnounceLockGlitchy { get; set; } = false;
-        [Description("Chance for CASSIE to glitch (values from 0% to 100%)")]
-        public float GateBAnnounceLockGlitchChance { get; set; } = 0f;
-        [Description("Chance for CASSIE to jam (values from 0% to 100%)")]
-        public float GateBAnnounceLockJamChance { get; set; } = 0f;
-        [Description("The time (in seconds) needed to wait after the respawn wave before opening (set to -1 to disable)")]
-        public float GateBOpenDelay { get; set; } = -1f;
-        [Description("The time (in seconds) needed to wait after the respawn wave before closing (set to -1 to disable) (relative to the respawn wave)")]
-        public float GateBCloseDelay { get; set; } = -1f;
+        public float GateBCloseDelay { get; set; } = 0f;
+        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before opening (set to -1 to disable)")]
+        public float GateBRespawnOpenDelay { get; set; } = -1f;
+        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before closing (set to -1 to disable) (relative to the respawn wave)")]
+        public float GateBRespawnCloseDelay { get; set; } = -1f;
         #endregion
         #endregion
+
 
 
         [Description("\nWhether the CASSIE messages are synced between each other (GATE A <-> GATE B)")]
         public bool SyncCassieMessages { get; set; } = false;
         #region SYNCED CASSIE SETTINGS
-        [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nSYNCED CASSIE SETTINGS\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nWhether CASSIE should broadcast the gate opening")]
+        [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nSYNCED CASSIE SETTINGS\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nWhether CASSIE should broadcast the gates locking")]
+        public bool SyncShouldAnnounceLock { get; set; } = false;
+        [Description("CASSIE broadcast message")]
+        public string SyncAnnounceLockBroadcast { get; set; } = ".G7";
+        [Description("CASSIE broadcast translation")]
+        public string SyncAnnounceLockTranslation { get; set; } = "silly goober go look at your config";
+        [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
+        public bool SyncShouldAnnounceLockGlitchy { get; set; } = false;
+        [Description("Chance for CASSIE to glitch (values from 0% to 100%)")]
+        public float SyncAnnounceLockGlitchChance { get; set; } = 0f;
+        [Description("Chance for CASSIE to jam (values from 0% to 100%)")]
+        public float SyncAnnounceLockJamChance { get; set; } = 0f;
+        [Description("Whether CASSIE should broadcast the gates opening")]
         public bool SyncShouldAnnounceOpen { get; set; } = false;
         [Description("CASSIE broadcast message")]
         public string SyncAnnounceOpenBroadcast { get; set; } = ".G7";
@@ -98,6 +75,10 @@ namespace aegis.gateify
         public string SyncAnnounceOpenTranslation { get; set; } = "silly goober go look at your config";
         [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
         public bool SyncShouldAnnounceOpenGlitchy { get; set; } = false;
+        [Description("Chance for CASSIE to glitch (values from 0% to 100%)")]
+        public float SyncAnnounceOpenGlitchChance { get; set; } = 0f;
+        [Description("Chance for CASSIE to jam (values from 0% to 100%)")]
+        public float SyncAnnounceOpenJamChance { get; set; } = 0f;
         [Description("Whether CASSIE should broadcast the gate closing")]
         public bool SyncShouldAnnounceClose { get; set; } = false;
         [Description("CASSIE broadcast message")]
@@ -105,12 +86,28 @@ namespace aegis.gateify
         [Description("CASSIE broadcast translation")]
         public string SyncAnnounceCloseTranslation { get; set; } = "silly goober go look at your config";
         [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
-        public bool SyncShouldAnnounceCloseGlitch { get; set; } = false;
+        public bool SyncShouldAnnounceCloseGlitchy { get; set; } = false;
+        [Description("Chance for CASSIE to glitch (values from 0% to 100%)")]
+        public float SyncAnnounceCloseGlitchChance { get; set; } = 0f;
+        [Description("Chance for CASSIE to jam (values from 0% to 100%)")]
+        public float SyncAnnounceCloseJamChance { get; set; } = 0f;
         #endregion
 
         #region NON-SYNCED CASSIE SETTINGS
         #region GATE A
-        [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nNON-SYNCED CASSIE SETTINGS\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nGATE A\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nWhether CASSIE should broadcast the gate opening")]
+        [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nNON-SYNCED CASSIE SETTINGS\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nGATE A\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nWhether CASSIE should broadcast the gate locking")]
+        public bool GateAShouldAnnounceLock { get; set; } = false;
+        [Description("CASSIE broadcast message")]
+        public string GateAAnnounceLockBroadcast { get; set; } = ".G7";
+        [Description("CASSIE broadcast translation")]
+        public string GateAAnnounceLockTranslation { get; set; } = "silly goober go look at your config";
+        [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
+        public bool GateAShouldAnnounceLockGlitchy { get; set; } = false;
+        [Description("Chance for CASSIE to glitch (values from 0% to 100%)")]
+        public float GateAAnnounceLockGlitchChance { get; set; } = 0f;
+        [Description("Chance for CASSIE to jam (values from 0% to 100%)")]
+        public float GateAAnnounceLockJamChance { get; set; } = 0f;
+        [Description("Whether CASSIE should broadcast the gate opening")]
         public bool GateAShouldAnnounceOpen { get; set; } = false;
         [Description("CASSIE broadcast message")]
         public string GateAAnnounceOpenBroadcast { get; set; } = ".G7";
@@ -118,6 +115,10 @@ namespace aegis.gateify
         public string GateAAnnounceOpenTranslation { get; set; } = "silly goober go look at your config";
         [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
         public bool GateAShouldAnnounceOpenGlitchy { get; set; } = false;
+        [Description("Chance for CASSIE to glitch (values from 0% to 100%)")]
+        public float GateAAnnounceOpenGlitchChance { get; set; } = 0f;
+        [Description("Chance for CASSIE to jam (values from 0% to 100%)")]
+        public float GateAAnnounceOpenJamChance { get; set; } = 0f;
         [Description("Whether CASSIE should broadcast the gate closing")]
         public bool GateAShouldAnnounceClose { get; set; } = false;
         [Description("CASSIE broadcast message")]
@@ -125,10 +126,26 @@ namespace aegis.gateify
         [Description("CASSIE broadcast translation")]
         public string GateAAnnounceCloseTranslation { get; set; } = "silly goober go look at your config";
         [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
-        public bool GateAShouldAnnounceCloseGlitch { get; set; } = false;
+        public bool GateAShouldAnnounceCloseGlitchy { get; set; } = false;
+        [Description("Chance for CASSIE to glitch (values from 0% to 100%)")]
+        public float GateAAnnounceCloseGlitchChance { get; set; } = 0f;
+        [Description("Chance for CASSIE to jam (values from 0% to 100%)")]
+        public float GateAAnnounceCloseJamChance { get; set; } = 0f;
         #endregion
         #region GATE B
-        [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nGATE B\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nWhether CASSIE should broadcast the gate opening")]
+        [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nGATE B\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nWhether a CASSIE message should broadcast the lock")]
+        public bool GateBShouldAnnounceLock { get; set; } = false;
+        [Description("CASSIE broadcast message")]
+        public string GateBAnnounceLockBroadcast { get; set; } = ".G7";
+        [Description("CASSIE broadcast translation")]
+        public string GateBAnnounceLockTranslation { get; set; } = "silly goober go look at your config";
+        [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
+        public bool GateBShouldAnnounceLockGlitchy { get; set; } = false;
+        [Description("Chance for CASSIE to glitch (values from 0% to 100%)")]
+        public float GateBAnnounceLockGlitchChance { get; set; } = 0f;
+        [Description("Chance for CASSIE to jam (values from 0% to 100%)")]
+        public float GateBAnnounceLockJamChance { get; set; } = 0f;
+        [Description("Whether CASSIE should broadcast the gate opening")]
         public bool GateBShouldAnnounceOpen { get; set; } = false;
         [Description("CASSIE broadcast message")]
         public string GateBAnnounceOpenBroadcast { get; set; } = ".G7";
@@ -136,6 +153,10 @@ namespace aegis.gateify
         public string GateBAnnounceOpenTranslation { get; set; } = "silly goober go look at your config";
         [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
         public bool GateBShouldAnnounceOpenGlitchy { get; set; } = false;
+        [Description("Chance for CASSIE to glitch (values from 0% to 100%)")]
+        public float GateBAnnounceOpenGlitchChance { get; set; } = 0f;
+        [Description("Chance for CASSIE to jam (values from 0% to 100%)")]
+        public float GateBAnnounceOpenJamChance { get; set; } = 0f;
         [Description("Whether CASSIE should broadcast the gate closing")]
         public bool GateBShouldAnnounceClose { get; set; } = false;
         [Description("CASSIE broadcast message")]
@@ -143,7 +164,11 @@ namespace aegis.gateify
         [Description("CASSIE broadcast translation")]
         public string GateBAnnounceCloseTranslation { get; set; } = "silly goober go look at your config";
         [Description("Whether the CASSIE message will be glitchy (i.e.: random static/jams)")]
-        public bool GateBShouldAnnounceCloseGlitch { get; set; } = false;
+        public bool GateBShouldAnnounceCloseGlitchy { get; set; } = false;
+        [Description("Chance for CASSIE to glitch (values from 0% to 100%)")]
+        public float GateBAnnounceCloseGlitchChance { get; set; } = 0f;
+        [Description("Chance for CASSIE to jam (values from 0% to 100%)")]
+        public float GateBAnnounceCloseJamChance { get; set; } = 0f;
         #endregion
         #endregion
     }
