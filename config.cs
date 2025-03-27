@@ -18,7 +18,7 @@ namespace aegis.gateify
         [Description("Whether gate setting should sync between each other")]
         public bool ShouldSyncGates { get; set; } = true;
         #region SYNCED GATE SETTINGS
-        [Description("SYNCED SETTINGS\nShould the gates lock after a specific time? (use 0 for round start)")]
+        [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nSYNCED SETTINGS\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nShould the gates lock after a specific time? (use 0 for round start)")]
         public float SyncLockDelay { get; set; } = 0f;
         [Description("Should the gates close after said delay? (use 0 for round start) (useful if the gate is already open yet you still want people to be locked in)")]
         public float SyncCloseAfterDelay { get; set; } = 0f;
@@ -41,7 +41,7 @@ namespace aegis.gateify
         #endregion
         #region NON-SYNCED GATE SETTINGS
         #region GATE A
-        [Description("NON-SYNCED SETTINGS\nGATE A\nShould the gate lock after a specific time? (use 0 for round start)")]
+        [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nNON-SYNCED SETTINGS\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nGATE A\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nShould the gate lock after a specific time? (use 0 for round start)")]
         public float GateALockDelay { get; set; } = 0f;
         [Description("Should the gate close after said delay? (use 0 for round start) (useful if the gate is already open yet you still want people to be locked in)")]
         public float GateACloseAfterDelay { get; set; } = 0f;
@@ -63,7 +63,7 @@ namespace aegis.gateify
         public float GateACloseDelay { get; set; } = -1f;
         #endregion
         #region GATE B
-        [Description("GATE B\nShould the gate lock after a specific time? (use 0 for round start)")]
+        [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nGATE B\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nShould the gate lock after a specific time? (use 0 for round start)")]
         public float GateBLockDelay { get; set; } = 0f;
         [Description("Should the gate close after said delay? (use 0 for round start) (useful if the gate is already open yet you still want people to be locked in)")]
         public float GateBCloseAfterDelay { get; set; } = 0f;
@@ -87,10 +87,10 @@ namespace aegis.gateify
         #endregion
 
 
-        [Description("Whether the CASSIE messages are synced between each other (GATE A <-> GATE B")]
+        [Description("\nWhether the CASSIE messages are synced between each other (GATE A <-> GATE B)")]
         public bool SyncCassieMessages { get; set; } = false;
         #region SYNCED CASSIE SETTINGS
-        [Description("SYNCED CASSIE SETTINGS\nWhether CASSIE should broadcast the gate opening")]
+        [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nSYNCED CASSIE SETTINGS\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nWhether CASSIE should broadcast the gate opening")]
         public bool SyncShouldAnnounceOpen { get; set; } = false;
         [Description("CASSIE broadcast message")]
         public string SyncAnnounceOpenBroadcast { get; set; } = ".G7";
@@ -110,7 +110,7 @@ namespace aegis.gateify
 
         #region NON-SYNCED CASSIE SETTINGS
         #region GATE A
-        [Description("NON-SYNCED CASSIE SETTINGS\nGATE A\nWhether CASSIE should broadcast the gate opening")]
+        [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nNON-SYNCED CASSIE SETTINGS\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nGATE A\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nWhether CASSIE should broadcast the gate opening")]
         public bool GateAShouldAnnounceOpen { get; set; } = false;
         [Description("CASSIE broadcast message")]
         public string GateAAnnounceOpenBroadcast { get; set; } = ".G7";
@@ -128,7 +128,7 @@ namespace aegis.gateify
         public bool GateAShouldAnnounceCloseGlitch { get; set; } = false;
         #endregion
         #region GATE B
-        [Description("GATE B\nWhether CASSIE should broadcast the gate opening")]
+        [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nGATE B\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nWhether CASSIE should broadcast the gate opening")]
         public bool GateBShouldAnnounceOpen { get; set; } = false;
         [Description("CASSIE broadcast message")]
         public string GateBAnnounceOpenBroadcast { get; set; } = ".G7";

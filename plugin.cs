@@ -36,6 +36,19 @@ namespace aegis.gateify
             GateA = Door.Get(DoorType.GateA);
             GateB = Door.Get(DoorType.GateB);
 
+            if (Config.ShouldSyncGates)
+            {
+                #region SYNCED SETTINGS
+
+                #endregion
+            }
+            else
+            {
+                #region NON-SYNCED SETTINGS
+
+                #endregion
+            }
+
             /*Timing.CallDelayed(Config.SyncLockDelay, () =>
             {
                 LockGate(GateA);
