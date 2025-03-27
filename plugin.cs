@@ -123,7 +123,7 @@ namespace aegis.gateify
 
                 #region GATE B
 
-                Timing.CallDelayed(Config.GateALockDelay, () =>
+                Timing.CallDelayed(Config.GateBLockDelay, () =>
                 {
                     #region ANNOUNCE GATE LOCK
 
@@ -148,7 +148,7 @@ namespace aegis.gateify
                     #endregion
                 });
 
-                Timing.CallDelayed(Config.GateACloseDelay, () =>
+                Timing.CallDelayed(Config.GateBCloseDelay, () =>
                 {
                     #region CLOSE GATE
 
