@@ -22,10 +22,10 @@ namespace aegis.gateify
         public float SyncLockDelay { get; set; } = 0f;
         [Description("Should the gates close after said delay? (use 0 for round start) (useful if the gate is already open yet you still want people to be locked in)")]
         public float SyncCloseDelay { get; set; } = 0f;
-        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before opening (set to -1 to disable)")]
-        public float SyncRespawnOpenDelay { get; set; } = -1f;
-        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before closing (set to -1 to disable) (relative to the respawn wave)")]
-        public float SyncRespawnCloseDelay { get; set; } = -1f;
+        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before opening (set to 0 to disable)")]
+        public float SyncRespawnOpenDelay { get; set; } = 0f;
+        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before closing (set to 0 to disable) (relative to the respawn wave)")]
+        public float SyncRespawnCloseDelay { get; set; } = 0f;
         #endregion
         #region NON-SYNCED GATE SETTINGS
         #region GATE A
@@ -33,20 +33,20 @@ namespace aegis.gateify
         public float GateALockDelay { get; set; } = 0f;
         [Description("Should the gate close after said delay? (use 0 for round start) (useful if the gate is already open yet you still want people to be locked in)")]
         public float GateACloseDelay { get; set; } = 0f;
-        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before opening (set to -1 to disable)")]
-        public float GateARespawnOpenDelay { get; set; } = -1f;
-        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before closing (set to -1 to disable) (relative to the respawn wave)")]
-        public float GateARespawnCloseDelay { get; set; } = -1f;
+        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before opening (set to 0 to disable)")]
+        public float GateARespawnOpenDelay { get; set; } = 0f;
+        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before closing (set to 0 to disable) (relative to the respawn wave)")]
+        public float GateARespawnCloseDelay { get; set; } = 0f;
         #endregion
         #region GATE B
         [Description("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nGATE B\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nShould the gate lock after a specific time? (use 0 for round start)")]
         public float GateBLockDelay { get; set; } = 0f;
         [Description("Should the gate close after said delay? (use 0 for round start) (useful if the gate is already open yet you still want people to be locked in)")]
         public float GateBCloseDelay { get; set; } = 0f;
-        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before opening (set to -1 to disable)")]
-        public float GateBRespawnOpenDelay { get; set; } = -1f;
-        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before closing (set to -1 to disable) (relative to the respawn wave)")]
-        public float GateBRespawnCloseDelay { get; set; } = -1f;
+        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before opening (set to 0 to disable)")]
+        public float GateBRespawnOpenDelay { get; set; } = 0f;
+        [Description("(CASSIE IS SYNCED WITH THIS) The time (in seconds) needed to wait after the respawn wave before closing (set to 0 to disable) (relative to the respawn wave)")]
+        public float GateBRespawnCloseDelay { get; set; } = 0f;
         #endregion
         #endregion
 
