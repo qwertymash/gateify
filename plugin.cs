@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using Exiled.API.Enums;
 using Exiled.API.Features;
@@ -15,7 +14,7 @@ namespace aegis.gateify
     {
         public override string Name => "Gateify";
         public override string Author => "aegis";
-        public override Version Version => new Version(0, 1, 1);
+        public override Version Version => new Version(0, 2, 0);
         public override Version RequiredExiledVersion => new Version(9, 5, 0);
         private Door GateA = null;
         private Door GateB = null;
@@ -34,47 +33,47 @@ namespace aegis.gateify
 
         private void GetGates()
         {
-            GateA = Door.Get("GATE_A");
-            GateB = Door.Get("GATE_B");
+            GateA = Door.Get(DoorType.GateA);
+            GateB = Door.Get(DoorType.GateB);
 
-            Timing.CallDelayed(Config.AnnounceLockDelay, () =>
+            /*Timing.CallDelayed(Config.SyncLockDelay, () =>
             {
                 LockGate(GateA);
                 LockGate(GateB);
                 
-                if (Config.ShouldCloseAfterDelay)
+                if (Config.SyncShouldCloseAfterDelay)
                 {
                     CloseGate(GateA);
                     CloseGate(GateB);
                 }
 
-                if (Config.ShouldAnnounceLock)
+                if (Config.SyncShouldAnnounceLock)
                 {
-                    if (Config.ShouldAnnounceLockGlitch)
+                    if (Config.SyncShouldAnnounceLockGlitch)
                     {
-                        Cassie.GlitchyMessage(Config.AnnounceLockBroadcast, Config.AnnounceLockGlitchChance/100, Config.AnnounceLockJamChance/100);
+                        Cassie.GlitchyMessage(Config.SyncAnnounceLockBroadcast, Config.SyncAnnounceLockGlitchChance/100, Config.SyncAnnounceLockJamChance/100);
                     }
                     else
                     {
-                        Cassie.MessageTranslated(Config.AnnounceLockBroadcast, Config.AnnounceLockTranslation);
+                        Cassie.MessageTranslated(Config.SyncAnnounceLockBroadcast, Config.SyncAnnounceTranslation);
                     }
                 }
-            });
+            });*/
         }
 
         private void Respawn(RespawnedTeamEventArgs team)
         {
-            Log.Debug($"{team.Wave} arrived, unlocking their respective gate");
+            /*Log.Debug($"{team.Wave} arrived, unlocking their respective gate");
             if (team.Wave is NtfSpawnWave || team.Wave is NtfMiniWave)
             {
-                if (!Config.ShouldOpenAfterDelay)
+                if (!Config.SyncShouldOpenAfterDelay)
                 {
                     OpenGate(GateB);
                 }
 
                 Timing.CallDelayed(Config.AnnounceOpenDelay, () =>
                 {
-                    if (Config.ShouldOpenAfterDelay)
+                    if (Config.SyncShouldOpenAfterDelay)
                     {
                         OpenGate(GateB);
                     }
@@ -131,7 +130,7 @@ namespace aegis.gateify
                         CloseGate(GateA);
                     });
                 }
-            }
+            }*/
         }
 
         private void LockGate(Door gate)
