@@ -6,7 +6,7 @@ if you said yes to any of these, you finally found the solution (please dont sue
 
 so basically what it does is lock the gates and open them once a respawn wave arrived:
 - gate a for chaos
-- gate b for mtf
+- gate b for mtf<br>
 NOW ALSO HIGHLY CUSTOMIZABLE!
 
 "THATS SUCH A BAD IDEA! THE FACILITY WILL BECOME A DEATH TRAP!"
